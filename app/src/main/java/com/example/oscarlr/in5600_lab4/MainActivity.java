@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
         mWebsiteEditText = findViewById(R.id.website_edittext);
         mLocationEditText = findViewById(R.id.location_edittext);
         mShareEditText = findViewById(R.id.share_edittext);
+
+        Intent intent = getIntent();
+        Uri uri = intent.getData();
+
+        if (uri != null) {
+            String uri_string = "URI: " + uri.toString();
+            TextView textView = findViewById(R.id.text_uri_message);
+            textView.setText(uri_string);
+        }
     }
 
     public void openWebsite(View view) {
